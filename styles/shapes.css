@@ -1,3 +1,5 @@
+/* top shapes */
+
 .shape-1 {
     display: block;
     background-image: linear-gradient(
@@ -131,4 +133,186 @@
     position: absolute;
     font-size: 40px;
   }
+
+  /* bottom shapes */
+
+  .shape-9 {
+    display: block;
+    width: 400px;
+    height: 480px;
+    background-image: linear-gradient(
+      to left,
+      rgb(173, 44, 173),
+      rgb(97, 29, 153)
+    );
+    position: absolute;
+    transform: rotate(-40deg);
+    border-radius: 70px;
+    left: -6%;
+    top: 65%;
+  }
+  
+  .shape-10 {
+    display: block;
+    height: 100px;
+    width: 460px;
+    position: absolute;
+    transform: rotate(-40deg);
+    border-radius: 150px;
+    background-image: linear-gradient(
+      to right,
+      rgb(230, 59, 130),
+      rgb(255, 130, 46)
+    );
+    left: 3%;
+    top: 85%;
+  }
+  
+  /* .shape-11 {
+      display: block;
+      width: 250px;
+      height: 250px;
+      background-image: linear-gradient(
+        to left,
+        rgb(214, 165, 29),
+        rgb(192, 49, 13)
+      );
+      border-radius: 20px;
+      transform: rotate(-45deg);
+      position: absolute;
+      left: -6%;
+      top: 70%;
+    } */
+  
+  .shape-12 {
+    display: block;
+    height: 100px;
+    width: 450px;
+    position: absolute;
+    transform: rotate(-40deg);
+    border-radius: 150px;
+    background-image: linear-gradient(
+      to right,
+      rgb(38, 25, 226),
+      rgb(135, 28, 206)
+    );
+    left: 5%;
+    top: 70%;
+  }
+  
+  .shape-13 {
+    display: block;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background-color: rgba(181, 95, 252, 0.5);
+    position: absolute;
+    top: 56%;
+    left: 5%;
+  }
+  
+  .shape-13:before {
+    display: block;
+    content: "";
+    width: 70px;
+    height: 70px;
+    background-color: rgba(44, 10, 136, 0.6);
+    border-radius: 50%;
+    position: absolute;
+    top: 25%;
+    left: 24%;
+  }
+  
+  /* .shape-14 {
+      display: block;
+      width: 220px;
+      height: 200px;
+      background-image: linear-gradient(
+        to left,
+        rgb(155, 29, 214),
+        rgb(56, 14, 124)
+      );
+      border-radius: 30px;
+      transform: rotate(-45deg);
+      position: absolute;
+      left: 9%;
+      top: 91%;
+    }*/
+  
+  .shape-15 {
+    display: block;
+    width: 180px;
+    height: 180px;
+    color: rgba(181, 95, 252, 0.2);
+    position: absolute;
+    font-size: 270px;
+    top: 76%;
+    left: 22%;
+    font-weight: 700;
+    transform: rotate(-20deg);
+  }
+  
+  .shape-16 {
+    display: grid;
+    width: 180px;
+    height: 180px;
+    background-color: rgb(255, 254, 254, 0.3);
+    left: 74%;
+    top: 79%;
+    position: absolute;
+    border-radius: 50%;
+  }
+  
+  .shape-17 {
+    display: block;
+    background-color: rgb(71, 23, 243);
+    width: 320px;
+    height: 320px;
+    border-radius: 30px;
+    transform: rotate(45deg);
+    position: absolute;
+    top: 70%;
+    left: 90%;
+  }
+  
+  .shape-18 {
+    display: grid;
+    grid-template-columns: repeat(5, 30px);
+    grid-template-rows: repeat(5, 26px);
+    color: rgb(255, 255, 255, 0.2);
+    transform: rotate(45deg);
+    left: 88%;
+    top: 65%;
+    position: absolute;
+    font-size: 40px;
+  }
+  
+  .shape-19 {
+    display: block;
+    font-family: "Balsamiq Sans", cursive;
+    color: rgba(255, 11, 194, 0.8);
+    font-weight: 700;
+    font-size: 250px;
+    left: 81%;
+    top: 68%;
+    position: absolute;
+    transform: rotate(20deg);
+  }
+  
+  .shape-20 {
+    display: block;
+    border: dashed rgb(255, 255, 255, 0.6);
+    width: 620px;
+    height: 620px;
+    border-radius: 100px;
+    position: absolute;
+    top: 55%;
+    left: 75%;
+    transform: rotate(45deg);
+  }
+  
+  .hide-shapes {
+    display: none;
+  }
+  
   
