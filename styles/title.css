@@ -1,0 +1,101 @@
+.title-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 15%;
+    left: 42%;
+    opacity: 1;
+  }
+  
+  .title {
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  .title > h1 {
+    font-family: "Balsamiq Sans", cursive;
+    font-weight: 800;
+    font-size: 140px;
+    color: rgb(240, 45, 191);
+    text-shadow: 4px 4px rgba(35, 0, 75, 0.8);
+  }
+  
+  .blue {
+    color: rgb(68, 155, 255);
+  }
+  
+  .tic {
+    display: flex;
+    flex-direction: row;
+    letter-spacing: 9px;
+  }
+  
+  .tac {
+    display: flex;
+    flex-direction: row;
+    letter-spacing: 5px;
+  }
+  
+  .toe {
+    display: flex;
+    flex-direction: row;
+    letter-spacing: 2px;
+  }
+  
+  /* tic */
+  
+  .tic-t {
+    transform: skew(10deg, -10deg);
+  }
+  
+  .tic-i {
+    transform: skew(-5deg, 5deg);
+  }
+  
+  .tic-c {
+    transform: skew(7deg, -7deg);
+  }
+  
+  /* tac */
+  
+  .tac-t {
+    transform: skew(-10deg, 10deg);
+  }
+  
+  .tac-a {
+    transform: skew(5deg, -5deg);
+  }
+  
+  .tac-c {
+    transform: skew(-15deg, 15deg);
+  }
+  
+  /* toe */
+  
+  .toe-t {
+    transform: skew(7deg, -7deg);
+  }
+  
+  .toe-e {
+    transform: skew(-7deg, 7deg);
+  }
+  
+  .play-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    background-image: linear-gradient(
+      to right,
+      rgb(214, 33, 145),
+      rgb(135, 28, 206),
+      rgb(135, 28, 206)
+    );
+    width: 140px;
+    height: 70px;
+    border-radius: 50px;
+  }
