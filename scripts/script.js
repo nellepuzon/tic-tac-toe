@@ -26,6 +26,7 @@ let oTurn;
 
 playButton.addEventListener("click", startGame);
 playAgainButton.addEventListener("click", startGame);
+exitButton.addEventListener("click", exitGame);
 
 function startGame() {
   gameContainer.classList.add("show-board");
@@ -96,5 +97,12 @@ function checkWin(currentPlayer) {
       return cells[index].classList.contains(currentPlayer);
     });
   });
+}
+
+function exitGame() {
+  gameContainer.classList.remove("show-board");
+  titleContainer.classList.remove("hide");
+  topShapes.classList.remove("hide-shapes");
+  bottomShapes.classList.remove("hide-shapes");
 }
 
