@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic Tac Toe</title>
-    <link rel="stylesheet" href="styles/base.css" />
-    <link rel="stylesheet" href="styles/shapes.css" />
+    <link rel="stylesheet" href="styles/base.css">
     <link rel="stylesheet" href="styles/front.css">
+    <link rel="stylesheet" href="styles/shapes.css">
     <link rel="stylesheet" href="styles/game.css">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,22 +15,28 @@
       href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
       rel="stylesheet"
     />
-  </head>
-  <body>
-    <div class="background">
-      <div class="xoxo">
-        x o x o x o x o x o x o x o x o x o x o x o x o x o x o x o x o x o x o
-        x o x o x o x o x o x o x o x o x o x o x o x o x o x o x o x o x o x o
-        x o x o x o x o x o x o x o x o x o x o x o x o x o x o x o x o x o x o
-        x o x o x o x o x o x o x o x o x o x o x o x o x o x o x o x o x o x o
-        x o x o x o x o x o x o x o x o x o x o x o x o x o x o x o x o x o x o
-        x o x o x o x o x o x o x o x o x o x o x o x o x o x o x o x o x o x o
-        x o x o x o x o x o x o x o x o x o x o x o x o x o x o x o x o x o x o
-        x o x o x o x o x o x o x o x o x o x o x o x o x o x o x o x o x o x o
-      </div>
+</head>
+<body>
+  <div class="background">
+    <div class="xoxo">
+      x o x o x o x o x o x o x o x o x o x o x o
+      x o x o x o x o x o x o x o x o x o x o x o
+      x o x o x o x o x o x o x o x o x o x o x o
+      x o x o x o x o x o x o x o x o x o x o x o
+      x o x o x o x o x o x o x o x o x o x o x o
+      x o x o x o x o x o x o x o x o x o x o x o
+      x o x o x o x o x o x o x o x o x o x o x o
+      x o x o x o x o x o x o x o x o x o x o x o
+      x o x o x o x o x o x o x o x o x o x o x o
+      x o x o x o x o x o x o x o x o x o x o x o
+      x o x o x o x o x o x o x o x o x o x o x o
+      x o x o x o x o x o x o x o x o x o x o x o
+      x o x o x o x o x o x o x o x o x o x o x o
+      x o x o x o x o x o x o x o x o x o x o x o
     </div>
+  </div>
 
-    <div class="top-decor">
+  <div class="top-decor">
       <div class="shape-1"></div>
       <div class="shape-2"></div>
       <div class="shape-3"></div>
@@ -73,76 +79,76 @@
     </div>
 
     <div class="title-container">
-        <div class="title">
-          <h1 class="tic">
-            <div class="tic-t">T</div>
-            <div class="blue tic-i">I</div>
-            <div class="tic-c">C</div>
-          </h1>
-          <h1 class="tac">
-            <div class="tac-t">T</div>
-            <div class="blue tac-a">A</div>
-            <div class="tac-c">C</div>
-          </h1>
-          <h1 class="toe">
-            <div class="toe-t">T</div>
-            <div class="blue toe-o">O</div>
-            <div class="toe-e">E</div>
-          </h1>
-        </div>
-
-        <div class="play-button" onclick="startGame()">
-            <div class="play">Play</div>
-          </div>
+      <div class="title">
+        <h1 class="tic">
+          <div class="tic-t">T</div>
+          <div class="blue tic-i">I</div>
+          <div class="tic-c">C</div>
+        </h1>
+        <h1 class="tac">
+          <div class="tac-t">T</div>
+          <div class="blue tac-a">A</div>
+          <div class="tac-c">C</div>
+        </h1>
+        <h1 class="toe">
+          <div class="toe-t">T</div>
+          <div class="blue toe-o">O</div>
+          <div class="toe-e">E</div>
+        </h1>
       </div>
 
-      <div class="bottom-decor">
-        <div class="shape-9"></div>
-        <div class="shape-10"></div>
-        <div class="shape-11"></div>
-        <div class="shape-12"></div>
-        <div class="shape-13"></div>
-        <div class="shape-14"></div>
-        <div class="shape-15">x</div>
-        <div class="shape-16"></div>
-        <div class="shape-17"></div>
-        <div class="shape-18">
-          <div>•</div>
-          <div>•</div>
-          <div>•</div>
-          <div>•</div>
-          <div>•</div>
-          <div>•</div>
-          <div>•</div>
-          <div>•</div>
-          <div>•</div>
-          <div>•</div>
-          <div>•</div>
-          <div>•</div>
-          <div>•</div>
-          <div>•</div>
-          <div>•</div>
-          <div>•</div>
-          <div>•</div>
-          <div>•</div>
-          <div>•</div>
-          <div>•</div>
-          <div>•</div>
-          <div>•</div>
-          <div>•</div>
-          <div>•</div>
-          <div>•</div>
-          <div>•</div>
-          <div>•</div>
-          <div>•</div>
-          <div>•</div>
-          <div>•</div>
-        </div>
-        <div class="shape-19">x</div>
-        <div class="shape-20"></div>
+      <div class="play-button">
+        <div class="play">Play</div>
       </div>
+    </div>
 
-      <div class="container">
+    <div class="bottom-decor">
+      <div class="shape-9"></div>
+      <div class="shape-10"></div>
+      <div class="shape-11"></div>
+      <div class="shape-12"></div>
+      <div class="shape-13"></div>
+      <div class="shape-14"></div>
+      <div class="shape-15">x</div>
+      <div class="shape-16"></div>
+      <div class="shape-17"></div>
+      <div class="shape-18">
+        <div>•</div>
+        <div>•</div>
+        <div>•</div>
+        <div>•</div>
+        <div>•</div>
+        <div>•</div>
+        <div>•</div>
+        <div>•</div>
+        <div>•</div>
+        <div>•</div>
+        <div>•</div>
+        <div>•</div>
+        <div>•</div>
+        <div>•</div>
+        <div>•</div>
+        <div>•</div>
+        <div>•</div>
+        <div>•</div>
+        <div>•</div>
+        <div>•</div>
+        <div>•</div>
+        <div>•</div>
+        <div>•</div>
+        <div>•</div>
+        <div>•</div>
+        <div>•</div>
+        <div>•</div>
+        <div>•</div>
+        <div>•</div>
+        <div>•</div>
+      </div>
+      <div class="shape-19">x</div>
+      <div class="shape-20"></div>
+    </div>
+  
+    <div class="container">
         <div class="box-title">
             <div class="small-title">
                 <h1 class="small-tic">
@@ -175,6 +181,14 @@
             <div class="cell"></div>
             <div class="cell"></div>
           </div>
-  
-  </body>
+
+          <div class="winning-message">
+            <div class="winning-text"></div>
+            <div class="buttons">
+                <button class="show-history">Show History</button>
+            <button class="restart-button">Play Again</button>
+            <button class="exit-button">Exit</button>
+          </div>
+    </div>
+</body>
 </html>
