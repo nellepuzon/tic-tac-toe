@@ -298,6 +298,6 @@
   border-color: white;
 }
 
-.winning-message.show {
+.winning-message-show {
   display: flex;
 }

@@ -5,8 +5,6 @@ const playButton = document.querySelector(".play-button");
 const gameContainer = document.querySelector(".container");
 const letterX = "x";
 const letterO = "o";
-const cells = document.querySelectorAll(".cell");
-const board = document.querySelector(".board");
 const winningCombinations = [
   [0, 1, 2],
   [3, 4, 5],
@@ -17,27 +15,33 @@ const winningCombinations = [
   [0, 4, 8],
   [2, 4, 6],
 ];
+const cells = document.querySelectorAll(".cell");
+const board = document.querySelector(".board");
 const winningMessage = document.querySelector(".winning-message");
 const winningText = document.querySelector(".winning-text");
+const playAgainButton = document.querySelector(".play-again-button");
+const exitButton = document.querySelector(".exit-button");
 
 let oTurn;
+
+playButton.addEventListener("click", startGame);
+playAgainButton.addEventListener("click", startGame);
 
 function startGame() {
   gameContainer.classList.add("show-board");
   titleContainer.classList.add("hide");
   topShapes.classList.add("hide-shapes");
-  bottomShapes.classList.add("hide-shapes");
+  bottomShapes.classList.add("hide-shapes");  
   oTurn = false;
   cells.forEach((cell) => {
     cell.classList.remove(letterX);
     cell.classList.remove(letterO);
+    cell.removeEventListener("click", cellClick);
     cell.addEventListener("click", cellClick, { once: true });
   });
   cellHover();
-  winningMessage.classList.remove("show");
+  winningMessage.classList.remove("winning-message-show");
 }
-
-playButton.addEventListener("click", startGame);
 
 function cellClick(e) {
   const cell = e.target;
@@ -48,8 +52,24 @@ function cellClick(e) {
   } else if (isDraw()) {
     endGame(true);
   } else {
-  swapTurns();
-  cellHover();
+    swapTurns();
+    cellHover();
+  }
+}
+
+function endGame(draw) {
+  if (draw) {
+    winningText.innerText = "Draw!";
+  } else {
+    winningText.innerText = `${oTurn ? "O" : "X"} Wins!`;
+  }
+  winningMessage.classList.add("winning-message-show");
+}
+
+function isDraw() {
+  return [...cells].every((cell) => {
+    return cell.classList.contains(letterX) || cell.classList.contains(letterO);
+  });
 }
 
 function placeLetter(cell, currentPlayer) {
@@ -78,18 +98,3 @@ function checkWin(currentPlayer) {
   });
 }
 
-function endGame(draw) {
-    if (draw) {
-      winningText.innerText = "Draw!";
-    } else {
-      winningText.innerText = `${oTurn ? "O" : "X"} Wins!`;
-    }
-    winningMessage.classList.add("show");
-  }
-  
-  function isDraw() {
-    return [...cells].every((cell) => {
-      return cell.classList.contains(letterX) || cell.classList.contains(letterO);
-    });
-  }
-}
