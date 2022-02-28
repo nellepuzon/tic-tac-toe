@@ -1,0 +1,38 @@
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(65, 36, 133);
+  font-family: "Balsamiq Sans", cursive;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  user-select: none;
+   -webkit-user-select: none; 
+   -khtml-user-select: none; 
+   -moz-user-select: none;
+   -ms-user-select: none;
+}
+
+.background {
+    margin: -20%;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    transform: rotate(-25deg);
+  }
+  
+  .xoxo {
+    color:rgb(81, 48, 156);
+    font-size: 120px;
+    font-weight: 700;
+    opacity: 0.25;
+    letter-spacing: 2px;
+    position: fixed;
+  
+  }
