@@ -18,6 +18,7 @@ function startGame() {
   topShapes.classList.add("hide-shapes");
   bottomShapes.classList.add("hide-shapes");
   oTurn = false;
+  cellHover();
 }
 
 cells.forEach((cell) => {
