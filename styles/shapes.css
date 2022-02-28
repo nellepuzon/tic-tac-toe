@@ -1,0 +1,134 @@
+.shape-1 {
+    display: block;
+    background-image: linear-gradient(
+      to top left,
+      rgb(47, 117, 197),
+      rgb(96, 181, 221)
+    );
+    width: 420px;
+    height: 280px;
+    border-radius: 30px;
+    transform: rotate(40deg);
+    position: absolute;
+    top: -8%;
+    left: -5%;
+  }
+  
+  .shape-2 {
+    display: block;
+    width: 200px;
+    height: 200px;
+    background-color: rgb(250, 185, 46);
+    border-radius: 50%;
+    position: relative;
+    left: 65%;
+    transform: translateY(-100px);
+  }
+  
+  .shape-2:before {
+    display: block;
+    content: "";
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    background-color: rgb(84, 45, 175);
+    border-radius: 50%;
+  }
+  
+  .shape-3 {
+    display: block;
+    width: 400px;
+    height: 480px;
+    background-image: linear-gradient(
+      to left,
+      rgb(173, 44, 173),
+      rgb(97, 29, 153)
+    );
+    left: 82%;
+    top: -22%;
+    position: absolute;
+    transform: rotate(-40deg);
+    border-radius: 70px;
+  }
+  
+  .shape-4 {
+    display: block;
+    height: 100px;
+    width: 420px;
+    background-image: linear-gradient(
+      to left,
+      rgb(236, 224, 48),
+      rgb(216, 82, 5)
+    );
+    left: 78%;
+    top: 9%;
+    position: absolute;
+    transform: rotate(-40deg);
+    border-radius: 150px;
+  }
+  
+  .shape-5 {
+    display: block;
+    height: 100px;
+    width: 400px;
+    background-image: linear-gradient(
+      to left,
+      rgb(38, 25, 226),
+      rgb(135, 28, 206)
+    );
+    left: 70%;
+    top: 12%;
+    position: absolute;
+    transform: rotate(-40deg);
+    border-radius: 150px;
+  }
+  
+  .shape-6 {
+    display: block;
+    width: 150px;
+    height: 150px;
+    background-color: rgba(181, 157, 238, 0.3);
+    border-radius: 50%;
+    position: absolute;
+    left: 76%;
+    top: 18%;
+  }
+  
+  .shape-6:before {
+    display: block;
+    content: "";
+    width: 75px;
+    height: 75px;
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    background-color: rgba(31, 6, 100, 0.7);
+    border-radius: 50%;
+  }
+  
+  .shape-7 {
+    display: block;
+    font-family: "Balsamiq Sans", cursive;
+    color: rgb(255, 254, 254, 0.3);
+    font-weight: 700;
+    font-size: 120px;
+    left: 78%;
+    top: -2%;
+    position: absolute;
+    transform: rotate(-20deg);
+  }
+  
+  .shape-8 {
+    display: grid;
+    grid-template-columns: repeat(5, 30px);
+    grid-template-rows: repeat(5, 26px);
+    color: rgb(255, 255, 255, 0.3);
+    transform: rotate(40deg);
+    left: 13%;
+    top: 13%;
+    position: absolute;
+    font-size: 40px;
+  }
+  
