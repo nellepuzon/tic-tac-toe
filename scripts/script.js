@@ -6,6 +6,7 @@ const gameContainer = document.querySelector(".container");
 const letterX = "x";
 const letterO = "o";
 const cells = document.querySelectorAll(".cell");
+const board = document.querySelector(".board");
 
 let oTurn;
 
@@ -20,20 +21,18 @@ function startGame() {
 }
 
 cells.forEach((cell) => {
-    cell.classList.remove(letterX);
-    cell.classList.remove(letterO);
-    cell.addEventListener("click", cellClick, { once: true });
-  });
-
+  cell.classList.remove(letterX);
+  cell.classList.remove(letterO);
+  cell.addEventListener("click", cellClick, { once: true });
+});
 
 function cellClick(e) {
   const cell = e.target;
   const playerTurn = oTurn ? letterO : letterX;
   placeLetter(cell, playerTurn);
-    swapTurns();
-    cellHover();
-  }
-
+  swapTurns();
+  cellHover();
+}
 
 function placeLetter(cell, playerTurn) {
   cell.classList.add(playerTurn);
@@ -43,3 +42,12 @@ function swapTurns() {
   oTurn = !oTurn;
 }
 
+function cellHover() {
+  board.classList.remove(letterX);
+  board.classList.remove(letterO);
+  if (oTurn) {
+    board.classList.add(letterO);
+  } else {
+    board.classList.add(letterX);
+  }
+}
