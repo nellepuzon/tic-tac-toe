@@ -99,3 +99,42 @@
     height: 70px;
     border-radius: 50px;
   }
+
+  /* play button */
+  
+  .play-button:before {
+    content: "";
+    height: 80px;
+    width: 150px;
+    position: absolute;
+    border: dashed 3px rgb(255, 255, 255, 0.6);
+    border-radius: 50px;
+    top: 88%;
+  }
+  
+  .play {
+    display: flex;
+    align-items: center;
+    color: rgb(255, 255, 255, 0.8);
+    font-family: "Balsamiq Sans", cursive;
+    font-size: 25px;
+    letter-spacing: 1px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-shadow: 2px 2px black;
+  }
+  
+  .play-button:hover {
+    cursor: pointer;
+    background-image: linear-gradient(
+      to left,
+      rgb(214, 33, 145),
+      rgb(135, 28, 206),
+      rgb(135, 28, 206)
+    );
+  }
+  
+  .hide {
+    opacity: 0;
+  }
+  
