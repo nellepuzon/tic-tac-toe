@@ -1,0 +1,237 @@
+.container {
+    position: absolute;
+    display: none;
+    width: 100%;
+    max-width: 80%;
+    height: 100%;
+    max-height: 75%;
+    background-color: rgb(74, 44, 145);
+    margin: 25% 10%;
+    box-shadow: 10px 10px 20px rgb(0, 0, 0, 0.5);
+  }
+  
+  .show-board {
+    display: flex;
+  }
+  
+  /* tic tac toe title */
+  
+  .small-title {
+    margin: 30px;
+    padding: 15px;
+    border: 2px dashed rgb(255, 255, 255, 0.4);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .small-tic,
+  .small-tac,
+  .small-toe {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .small-tic {
+    flex-direction: row;
+    letter-spacing: 6px;
+  }
+  
+  .small-tac {
+    flex-direction: row;
+    letter-spacing: 3px;
+  }
+  
+  .small-toe {
+    flex-direction: row;
+    letter-spacing: 1px;
+  }
+  
+  .small-tic-t,
+  .small-tic-c,
+  .small-tac-a,
+  .small-toe-t,
+  .small-toe-e {
+    color: rgb(255, 44, 143);
+  }
+  
+  .small-tic-i,
+  .small-tac-t,
+  .small-tac-c,
+  .small-toe-o {
+    color: rgb(51, 173, 255);
+  }
+  
+  /* tic */
+  
+  .small-tic-t {
+    transform: skew(10deg, -10deg);
+  }
+  
+  .small-tic-i {
+    transform: skew(-5deg, 5deg);
+  }
+  
+  .small-tic-c {
+    transform: skew(7deg, -7deg);
+  }
+  
+  /* tac */
+  
+  .small-tac-t {
+    transform: skew(-10deg, 10deg);
+  }
+  
+  .small-tac-a {
+    transform: skew(5deg, -5deg);
+  }
+  
+  .small-tac-c {
+    transform: skew(-15deg, 15deg);
+  }
+  
+  /* toe */
+  
+  .small-toe-t {
+    transform: skew(7deg, -7deg);
+  }
+  
+  .small-toe-e {
+    transform: skew(-7deg, 7deg);
+  }
+  
+  /* game board */
+  
+  .board {
+    width: 100vw;
+    max-width: 40%;
+    height: 100vh;
+    max-height: 75%;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(3, auto);
+    background-color: rgb(56, 31, 116);
+    border-radius: 30px;
+    margin: 7% 18%;
+    border: 2px dashed rgb(255, 255, 255, 0.4);
+  }
+  
+  /* game cell */
+  
+  .cell {
+    width: 160px;
+    height: 160px;
+    border: 2px dashed rgb(255, 255, 255, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .cell:first-child,
+  .cell:nth-child(2),
+  .cell:nth-child(3) {
+    border-top: none;
+  }
+  
+  .cell:nth-child(3n + 1) {
+    border-left: none;
+  }
+  
+  .cell:nth-child(3n + 3) {
+    border-right: none;
+  }
+  
+  .cell:last-child,
+  .cell:nth-child(8),
+  .cell:nth-child(7) {
+    border-bottom: none;
+  }
+  
+  .cell.x,
+  .cell.o {
+    cursor: not-allowed;
+  }
+  
+  /* x-color */
+  
+  .cell.x::before,
+  .cell.x::after {
+    background-color: rgb(255, 44, 143);
+  }
+  
+  /* o-color */
+  
+  .cell.o::before {
+    background-color: rgb(51, 173, 255);
+  }
+  
+  /* hover color */
+  
+  .board.x .cell:not(.x):not(.o):hover::before,
+  .board.x .cell:not(.x):not(.o):hover::after,
+  .board.o .cell:not(.x):not(.o):hover::before {
+    background-color: rgb(50, 27, 105);
+  }
+  
+  /* letter x */
+  
+  .cell.x::before,
+  .cell.x::after,
+  .board.x .cell:not(.x):not(.o):hover::before,
+  .board.x .cell:not(.x):not(.o):hover::after {
+    content: "";
+    position: absolute;
+    width: 150px;
+    max-width: 20%;
+    height: 150px;
+    max-height: 80%;
+  }
+  
+  .cell.x::before,
+  .board.x .cell:not(.x):not(.o):hover::before {
+    transform: rotate(45deg);
+    border-radius: 10px;
+  }
+  
+  .cell.x::after,
+  .board.x .cell:not(.x):not(.o):hover::after {
+    transform: rotate(-45deg);
+    border-radius: 10px;
+  }
+  
+  /* letter-o */
+  
+  .cell.o::before,
+  .cell.o::after,
+  .board.o .cell:not(.x):not(.o):hover::before,
+  .board.o .cell:not(.x):not(.o):hover::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+  }
+  
+  .cell.o::before,
+  .board.o .cell:not(.x):not(.o):hover::before {
+    width: 150px;
+    max-width: 70%;
+    height: 150px;
+    max-height: 70%;
+  }
+  
+  /* inner o */
+  
+  .cell.o::after,
+  .board.o .cell:not(.x):not(.o):hover::after {
+    width: 100px;
+    max-width: 35%;
+    height: 100px;
+    max-height: 35%;
+    background-color: rgb(56, 31, 116);
+  }
