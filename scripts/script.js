@@ -5,6 +5,8 @@ const playButton = document.querySelector(".play-button");
 const gameContainer = document.querySelector(".container");
 const letterX = "x";
 const letterO = "o";
+const cells = document.querySelectorAll(".cell");
+const board = document.querySelector(".board");
 const winningCombinations = [
   [0, 1, 2],
   [3, 4, 5],
@@ -15,8 +17,6 @@ const winningCombinations = [
   [0, 4, 8],
   [2, 4, 6],
 ];
-const cells = document.querySelectorAll(".cell");
-const board = document.querySelector(".board");
 const winningMessage = document.querySelector(".winning-message");
 const winningText = document.querySelector(".winning-text");
 const playAgainButton = document.querySelector(".play-again-button");
@@ -105,4 +105,3 @@ function exitGame() {
   topShapes.classList.remove("hide-shapes");
   bottomShapes.classList.remove("hide-shapes");
 }
-
