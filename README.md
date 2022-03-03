@@ -5,7 +5,7 @@
 >> - Best on desktop
 >> - Follows the usual Tic Tac Toe rules
 
-![Front Page](screenshots/title.png)
+![Start Page](screenshots/title.png)
 
 ![Game Page](screenshots/game.png)
 
