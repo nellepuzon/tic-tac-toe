@@ -20,11 +20,12 @@ body {
 }
 
 .background {
-    margin: -20%;
+    margin: -23% -30%;
     display: flex;
     justify-content: flex-end;
     position: relative;
     transform: rotate(-25deg);
+
   }
   
   .xoxo {
@@ -34,5 +35,4 @@ body {
     opacity: 0.25;
     letter-spacing: 2px;
     position: fixed;
-  
   }

@@ -1,0 +1,10 @@
+.your-turn-x,
+.your-turn-o {
+  animation: blinker 0.8s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}

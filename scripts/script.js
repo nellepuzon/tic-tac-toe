@@ -1,7 +1,33 @@
+// START GAME
+
 const topShapes = document.querySelector(".top-decor");
 const bottomShapes = document.querySelector(".bottom-decor");
 const titleContainer = document.querySelector(".title-container");
 const playButton = document.querySelector(".play-button");
+
+function startGame() {
+  gameContainer.classList.add("show-board");
+  titleContainer.classList.add("hide");
+  topShapes.classList.add("hide-shapes");
+  bottomShapes.classList.add("hide-shapes");  
+  yourTurnO.style.display = "none";
+  playerTurnX.style.border ="2px dashed rgb(255, 255, 255, 0.5)"
+  oTurn = false;
+  cells.forEach(function(cell) {
+    cell.classList.remove(letterX);
+    cell.classList.remove(letterO);
+    cell.removeEventListener("click", cellClick);
+    cell.addEventListener("click", cellClick, { once: true });
+  });
+  cellHover();
+  winningMessage.classList.remove("winning-message-show");
+}
+
+playButton.addEventListener("click", startGame);
+
+
+// PLAY GAME
+
 const gameContainer = document.querySelector(".container");
 const letterX = "x";
 const letterO = "o";
@@ -20,29 +46,11 @@ const winningCombinations = [
 const winningMessage = document.querySelector(".winning-message");
 const winningText = document.querySelector(".winning-text");
 const playAgainButton = document.querySelector(".play-again-button");
-const exitButton = document.querySelector(".exit-button");
 
 let oTurn;
 
-playButton.addEventListener("click", startGame);
 playAgainButton.addEventListener("click", startGame);
-exitButton.addEventListener("click", exitGame);
 
-function startGame() {
-  gameContainer.classList.add("show-board");
-  titleContainer.classList.add("hide");
-  topShapes.classList.add("hide-shapes");
-  bottomShapes.classList.add("hide-shapes");  
-  oTurn = false;
-  cells.forEach((cell) => {
-    cell.classList.remove(letterX);
-    cell.classList.remove(letterO);
-    cell.removeEventListener("click", cellClick);
-    cell.addEventListener("click", cellClick, { once: true });
-  });
-  cellHover();
-  winningMessage.classList.remove("winning-message-show");
-}
 
 function cellClick(e) {
   const cell = e.target;
@@ -55,6 +63,7 @@ function cellClick(e) {
   } else {
     swapTurns();
     cellHover();
+    playerTurn();
   }
 }
 
@@ -99,9 +108,42 @@ function checkWin(currentPlayer) {
   });
 }
 
+// EXIT GAME
+
+const exitButton = document.querySelector(".exit-button");
+
 function exitGame() {
   gameContainer.classList.remove("show-board");
   titleContainer.classList.remove("hide");
   topShapes.classList.remove("hide-shapes");
   bottomShapes.classList.remove("hide-shapes");
 }
+
+exitButton.addEventListener("click", exitGame);
+
+// PLAYER TURN
+
+
+const yourTurnX = document.querySelector(".your-turn-x")
+const yourTurnO = document.querySelector(".your-turn-o")
+const playerTurnX = document.querySelector(".player-turn-x")
+const playerTurnO = document.querySelector(".player-turn-o")
+
+
+
+function playerTurn() {
+  if (oTurn) {
+    yourTurnX.style.display = "none";
+    yourTurnO.style.display = "flex";
+    playerTurnO.style.border ="2px dashed rgb(255, 255, 255, 0.5)"
+    playerTurnX.style.border ="none"
+  } else {
+    yourTurnO.style.display = "none";
+    yourTurnX.style.display = "flex";
+    playerTurnX.style.border ="2px dashed rgb(255, 255, 255, 0.5)"
+    playerTurnO.style.border ="none"
+  }
+}
+
+
+
