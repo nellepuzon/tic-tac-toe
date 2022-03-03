@@ -9,11 +9,10 @@ function startGame() {
   gameContainer.classList.add("show-board");
   titleContainer.classList.add("hide");
   topShapes.classList.add("hide-shapes");
-  bottomShapes.classList.add("hide-shapes");  
-  yourTurnO.style.display = "none";
-  playerTurnX.style.border ="2px dashed rgb(255, 255, 255, 0.5)"
+  bottomShapes.classList.add("hide-shapes");
+  playerTurn();
   oTurn = false;
-  cells.forEach(function(cell) {
+  cells.forEach(function (cell) {
     cell.classList.remove(letterX);
     cell.classList.remove(letterO);
     cell.removeEventListener("click", cellClick);
@@ -25,6 +24,26 @@ function startGame() {
 
 playButton.addEventListener("click", startGame);
 
+// PLAYER TURN
+
+const yourTurnX = document.querySelector(".your-turn-x");
+const yourTurnO = document.querySelector(".your-turn-o");
+const playerTurnX = document.querySelector(".player-turn-x");
+const playerTurnO = document.querySelector(".player-turn-o");
+
+function playerTurn() {
+  if (oTurn) {
+    yourTurnX.style.display = "none";
+    yourTurnO.style.display = "flex";
+    playerTurnO.style.border = "2px dashed rgb(255, 255, 255, 0.5)";
+    playerTurnX.style.border = "none";
+  } else {
+    yourTurnO.style.display = "none";
+    yourTurnX.style.display = "flex";
+    playerTurnX.style.border = "2px dashed rgb(255, 255, 255, 0.5)";
+    playerTurnO.style.border = "none";
+  }
+}
 
 // PLAY GAME
 
@@ -51,7 +70,6 @@ let oTurn;
 
 playAgainButton.addEventListener("click", startGame);
 
-
 function cellClick(e) {
   const cell = e.target;
   const currentPlayer = oTurn ? letterO : letterX;
@@ -74,6 +92,10 @@ function endGame(draw) {
     winningText.innerText = `${oTurn ? "O" : "X"} Wins!`;
   }
   winningMessage.classList.add("winning-message-show");
+  yourTurnO.style.display = "none";
+  yourTurnX.style.display = "none";
+  playerTurnX.style.border = "none";
+  playerTurnO.style.border = "none";
 }
 
 function isDraw() {
@@ -121,29 +143,15 @@ function exitGame() {
 
 exitButton.addEventListener("click", exitGame);
 
-// PLAYER TURN
+// HISTORY
 
+let moves = [];
+let boardState = [
+  ["", "", ""],
+  ["", "", ""],
+  ["", "", ""],
+];
 
-const yourTurnX = document.querySelector(".your-turn-x")
-const yourTurnO = document.querySelector(".your-turn-o")
-const playerTurnX = document.querySelector(".player-turn-x")
-const playerTurnO = document.querySelector(".player-turn-o")
-
-
-
-function playerTurn() {
-  if (oTurn) {
-    yourTurnX.style.display = "none";
-    yourTurnO.style.display = "flex";
-    playerTurnO.style.border ="2px dashed rgb(255, 255, 255, 0.5)"
-    playerTurnX.style.border ="none"
-  } else {
-    yourTurnO.style.display = "none";
-    yourTurnX.style.display = "flex";
-    playerTurnX.style.border ="2px dashed rgb(255, 255, 255, 0.5)"
-    playerTurnO.style.border ="none"
-  }
-}
-
-
+cell = moves.push(JSON.parse(JSON.stringify(boardState)));
+console.log(moves);
 
