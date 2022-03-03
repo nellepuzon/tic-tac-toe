@@ -10,7 +10,10 @@ function startGame() {
   titleContainer.classList.add("hide");
   topShapes.classList.add("hide-shapes");
   bottomShapes.classList.add("hide-shapes");
-  playerTurn();
+  yourTurnX.style.display = "flex";
+  yourTurnO.style.display = "none";
+  playerTurnX.style.border = "2px dashed rgb(255, 255, 255, 0.5)";
+  playerTurnO.style.border = "none";
   oTurn = false;
   cells.forEach(function (cell) {
     cell.classList.remove(letterX);
@@ -52,23 +55,8 @@ const letterX = "x";
 const letterO = "o";
 const cells = document.querySelectorAll(".cell");
 const board = document.querySelector(".board");
-const winningCombinations = [
-  [0, 1, 2],
-  [3, 4, 5],
-  [6, 7, 8],
-  [0, 3, 6],
-  [1, 4, 7],
-  [2, 5, 8],
-  [0, 4, 8],
-  [2, 4, 6],
-];
-const winningMessage = document.querySelector(".winning-message");
-const winningText = document.querySelector(".winning-text");
-const playAgainButton = document.querySelector(".play-again-button");
 
 let oTurn;
-
-playAgainButton.addEventListener("click", startGame);
 
 function cellClick(e) {
   const cell = e.target;
@@ -83,25 +71,6 @@ function cellClick(e) {
     cellHover();
     playerTurn();
   }
-}
-
-function endGame(draw) {
-  if (draw) {
-    winningText.innerText = "Draw!";
-  } else {
-    winningText.innerText = `${oTurn ? "O" : "X"} Wins!`;
-  }
-  winningMessage.classList.add("winning-message-show");
-  yourTurnO.style.display = "none";
-  yourTurnX.style.display = "none";
-  playerTurnX.style.border = "none";
-  playerTurnO.style.border = "none";
-}
-
-function isDraw() {
-  return [...cells].every((cell) => {
-    return cell.classList.contains(letterX) || cell.classList.contains(letterO);
-  });
 }
 
 function placeLetter(cell, currentPlayer) {
@@ -122,6 +91,41 @@ function cellHover() {
   }
 }
 
+// END GAME
+
+const winningCombinations = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6],
+];
+const winningMessage = document.querySelector(".winning-message");
+const winningText = document.querySelector(".winning-text");
+const playAgainButton = document.querySelector(".play-again-button");
+
+function endGame(draw) {
+  if (draw) {
+    winningText.innerText = "Draw!";
+  } else {
+    winningText.innerText = `${oTurn ? "O" : "X"} Wins!`;
+  }
+  winningMessage.classList.add("winning-message-show");
+  yourTurnO.style.display = "none";
+  yourTurnX.style.display = "none";
+  playerTurnX.style.border = "none";
+  playerTurnO.style.border = "none";
+}
+
+function isDraw() {
+  return [...cells].every((cell) => {
+    return cell.classList.contains(letterX) || cell.classList.contains(letterO);
+  });
+}
+
 function checkWin(currentPlayer) {
   return winningCombinations.some((combination) => {
     return combination.every((index) => {
@@ -129,6 +133,8 @@ function checkWin(currentPlayer) {
     });
   });
 }
+
+playAgainButton.addEventListener("click", startGame);
 
 // EXIT GAME
 
@@ -154,4 +160,3 @@ let boardState = [
 
 cell = moves.push(JSON.parse(JSON.stringify(boardState)));
 console.log(moves);
-
