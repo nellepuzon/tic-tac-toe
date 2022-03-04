@@ -10,13 +10,14 @@
     <link rel="stylesheet" href="styles/shapes.css">
     <link rel="stylesheet" href="styles/game.css">
     <link rel="stylesheet" href="styles/animation.css">
+    <link rel="stylesheet" href="styles/history.css">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
       rel="stylesheet"
     />
-    <script src="scripts/script.js" defer></script>
+    <!-- <script src="./scripts/script.js" defer></script> -->
 </head>
 <body>
   <div class="background">
@@ -179,20 +180,31 @@
             <div class="player">Player 1</div>
             <div class="letterX">X
             </div>
-
-
           </div>
         </div>
+
+        <div class="history-buttons">
+          <button class="previous">&laquo; Previous</button>
+          <button class="next">Next &raquo;</button>
+          <button class="exit">Exit</button>
+
+        </div>
         <div class="board">
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
+            <div id="1" class="cell top-left">top-left</div>
+            <div id="2" class="cell top-center">top-center</div>
+            <div id="3" class="cell top-right">top-right</div>
+            <div id="4" class="cell middle-left">middle-left</div>
+            <div id="5" class="cell center">center</div>
+            <div id="6" class="cell middle-right">middle-right</div>
+            <div id="7" class="cell bottom-left">bottom-left</div>
+            <div id="8" class="cell bottom-center">bottom-center</div>
+            <div id="9" class="cell bottom-right">bottom-right</div>
+          </div>
+          <div class="history">
+            <div class="show-history">
+              <div class="history-title">Move History</div>
+            <div class="history-list">
+            </div></div>
           </div>
           <div class="turn">
             <div class="your-turn-o"><span>></span> Your Turn</div>
@@ -205,10 +217,20 @@
           <div class="winning-message">
             <div class="winning-text"></div>
             <div class="buttons">
-                <button class="show-history">Show History</button>
+                <button class="view-history">View History</button>
             <button class="play-again-button">Play Again</button>
             <button class="exit-button">Exit</button>
           </div>
     </div>
+
+    <script type="module" src="./scripts/variables.js"></script>
+    <script type="module" src="./scripts/start-game.js"></script>
+    <script type="module" src="./scripts/player-turn.js"></script>
+    <script type="module" src="./scripts/play-game.js"></script>
+    <script type="module" src="./scripts/end-game.js"></script>
+    <script type="module" src="./scripts/exit-game.js"></script>
+    <script type="module" src="./scripts/history.js"></script>
+
+    
 </body>
 </html>
