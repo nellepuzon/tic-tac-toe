@@ -10,7 +10,7 @@
 
 ![Choose Player Page](screenshots/choose-player.png)
 
-![Game Page](screenshots/game.png)
+![Game Page](screenshots/play-game.png)
 
 ![Winner Page](screenshots/winner.png)
 
