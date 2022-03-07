@@ -1,31 +1,67 @@
+// PLAY
+
+const playButton = document.querySelector(".play-button");
+const frontPage = document.querySelector(".front-page");
+const chooseTurn = document.querySelector(".choose-player");
+const playerX = document.querySelector(".x-player");
+const playerO = document.querySelector(".o-player");
+let oTurn;
+
+playButton.addEventListener("click", choosePlayer);
+
+// CHOOSE PLAYER
+
+const gameContainer = document.querySelector(".container");
+
+function choosePlayer() {
+  frontPage.classList.add("hide");
+  chooseTurn.classList.add("show");
+  winningMessage.classList.remove("show");
+  gameContainer.classList.remove("show");
+
+  playerX.addEventListener("click", clickedPlayerX);
+  function clickedPlayerX() {
+    oTurn = false;
+    startGame();
+  }
+
+  playerO.addEventListener("click", clickedPlayerO);
+  function clickedPlayerO() {
+    oTurn = true;
+    startGame();
+  }
+}
+
 // START GAME
 
-const topShapes = document.querySelector(".top-decor");
-const bottomShapes = document.querySelector(".bottom-decor");
-const titleContainer = document.querySelector(".title-container");
-const playButton = document.querySelector(".play-button");
+let prevHistoryArray;
+let nextHistoryArray;
+let historyListIndex = 0;
 
 function startGame() {
-  gameContainer.classList.add("show-board");
-  titleContainer.classList.add("hide");
-  topShapes.classList.add("hide-shapes");
-  bottomShapes.classList.add("hide-shapes");
-  yourTurnX.style.display = "flex";
-  yourTurnO.style.display = "none";
-  playerTurnX.style.border = "2px dashed rgb(255, 255, 255, 0.5)";
-  playerTurnO.style.border = "none";
-  oTurn = false;
+  gameContainer.classList.add("show");
+  chooseTurn.classList.remove("show");
+  for (let i = 0; i < historyPage.length; ++i) {
+    historyPage[i].classList.remove("show");
+  }
+  for (let i = 0; i < yourTurn.length; ++i) {
+    yourTurn[i].classList.add("show");
+  }
+
+  playerTurn();
+
   cells.forEach(function (cell) {
     cell.classList.remove(letterX);
     cell.classList.remove(letterO);
-    cell.removeEventListener("click", cellClick);
     cell.addEventListener("click", cellClick, { once: true });
   });
-  cellHover();
-  winningMessage.classList.remove("winning-message-show");
-}
 
-playButton.addEventListener("click", startGame);
+  cellHover();
+
+  historyList.innerHTML = "";
+  prevHistoryArray = [];
+  nextHistoryArray = [];
+}
 
 // PLAYER TURN
 
@@ -36,32 +72,34 @@ const playerTurnO = document.querySelector(".player-turn-o");
 
 function playerTurn() {
   if (oTurn) {
-    yourTurnX.style.display = "none";
-    yourTurnO.style.display = "flex";
-    playerTurnO.style.border = "2px dashed rgb(255, 255, 255, 0.5)";
-    playerTurnX.style.border = "none";
+    yourTurnO.classList.add("show");
+    yourTurnX.classList.remove("show");
+    playerTurnO.classList.add("border");
+    playerTurnX.classList.remove("border");
   } else {
-    yourTurnO.style.display = "none";
-    yourTurnX.style.display = "flex";
-    playerTurnX.style.border = "2px dashed rgb(255, 255, 255, 0.5)";
-    playerTurnO.style.border = "none";
+    yourTurnX.classList.add("show");
+    yourTurnO.classList.remove("show");
+    playerTurnX.classList.add("border");
+    playerTurnO.classList.remove("border");
   }
 }
 
 // PLAY GAME
 
-const gameContainer = document.querySelector(".container");
-const letterX = "x";
-const letterO = "o";
 const cells = document.querySelectorAll(".cell");
 const board = document.querySelector(".board");
-
-let oTurn;
+const letterX = "x";
+const letterO = "o";
+let currentPlayer;
+let cell;
 
 function cellClick(e) {
-  const cell = e.target;
-  const currentPlayer = oTurn ? letterO : letterX;
+  cell = e.target;
+  const cellPosition = cell.innerText;
+  currentPlayer = oTurn ? letterO : letterX;
+  getCellValue(currentPlayer, cellPosition);
   placeLetter(cell, currentPlayer);
+
   if (checkWin(currentPlayer)) {
     endGame(false);
   } else if (isDraw()) {
@@ -73,8 +111,30 @@ function cellClick(e) {
   }
 }
 
+const historyList = document.querySelector(".history-list");
+
+function getCellValue(currentPlayer, cellPosition) {
+  const div = document.createElement("div");
+  if (currentPlayer == letterX) {
+    div.innerHTML = `player <span class="markedX">X</span> marked <span class="position">${cellPosition}</span>`;
+  } else {
+    div.innerHTML = `player <span class="markedO">O</span> marked <span class="position">${cellPosition}</span>`;
+  }
+  div.classList.add("history-item");
+  historyList.append(div);
+}
+
 function placeLetter(cell, currentPlayer) {
   cell.classList.add(currentPlayer);
+  prevHistoryArray.push([cell, currentPlayer]);
+
+  if (currentPlayer == "x") {
+    currentPlayer = "X";
+  } else {
+    currentPlayer = "O";
+  }
+
+  historyListIndex += 1;
 }
 
 function swapTurns() {
@@ -91,7 +151,7 @@ function cellHover() {
   }
 }
 
-// END GAME
+// CHECK WIN
 
 const winningCombinations = [
   [0, 1, 2],
@@ -105,7 +165,6 @@ const winningCombinations = [
 ];
 const winningMessage = document.querySelector(".winning-message");
 const winningText = document.querySelector(".winning-text");
-const playAgainButton = document.querySelector(".play-again-button");
 
 function endGame(draw) {
   if (draw) {
@@ -113,50 +172,124 @@ function endGame(draw) {
   } else {
     winningText.innerText = `${oTurn ? "O" : "X"} Wins!`;
   }
-  winningMessage.classList.add("winning-message-show");
-  yourTurnO.style.display = "none";
-  yourTurnX.style.display = "none";
-  playerTurnX.style.border = "none";
-  playerTurnO.style.border = "none";
+  winningMessage.classList.add("show");
 }
 
 function isDraw() {
-  return [...cells].every((cell) => {
+  return [...cells].every(function (cell) {
     return cell.classList.contains(letterX) || cell.classList.contains(letterO);
   });
 }
 
 function checkWin(currentPlayer) {
-  return winningCombinations.some((combination) => {
-    return combination.every((index) => {
+  return winningCombinations.some(function (combination) {
+    return combination.every(function (index) {
       return cells[index].classList.contains(currentPlayer);
     });
   });
 }
 
-playAgainButton.addEventListener("click", startGame);
+// HISTORY
+
+const viewHistoryButton = document.querySelector(".view-history");
+const prevButton = document.querySelector(".previous");
+const nextButton = document.querySelector(".next");
+const resetButton = document.querySelector(".reset");
+const historyPage = document.querySelectorAll(".history");
+const yourTurn = document.querySelectorAll(".turn");
+
+viewHistoryButton.addEventListener("click", viewHistory);
+
+function viewHistory() {
+  gameContainer.classList.add("show");
+  cells.forEach(function (cell) {
+    cell.removeEventListener("click", cellClick);
+  });
+  noCellHover();
+  winningMessage.classList.remove("show");
+
+  for (let i = 0; i < yourTurn.length; ++i) {
+    yourTurn[i].classList.remove("show");
+  }
+  for (let i = 0; i < historyPage.length; ++i) {
+    historyPage[i].classList.add("show");
+  }
+
+  historyListIndex = historyListChildren.length - 1;
+}
+
+function noCellHover() {
+  board.classList.remove(letterX);
+  board.classList.remove(letterO);
+}
+
+prevButton.addEventListener("click", previous);
+nextButton.addEventListener("click", next);
+resetButton.addEventListener("click", startGame);
+
+const historyListChildren = document.querySelector(".history-list").children;
+
+function displayListItem(historyListIndex, display) {
+  historyListChildren[historyListIndex].style.display = display;
+}
+
+function previous() {
+  if (prevHistoryArray.length > 1) {
+    displayListItem(historyListIndex, "none");
+    historyListIndex -= 1;
+    nextButton.style.opacity = "1";
+    nextButton.classList.add("active");
+    previousMove();
+  }
+  if (prevHistoryArray.length < 2) {
+    prevButton.style.opacity = "0.3";
+    prevButton.classList.remove("active");
+  }
+}
+
+function next() {
+  if (nextHistoryArray.length > 0) {
+    historyListIndex += 1;
+    displayListItem(historyListIndex, "block");
+    prevButton.style.opacity = "1";
+    prevButton.classList.add("active");
+    nextMove();
+  }
+  if (nextHistoryArray.length < 1) {
+    nextButton.style.opacity = "0.3";
+    nextButton.classList.remove("active");
+  }
+}
+
+function previousMove() {
+  let undoMove = prevHistoryArray.pop();
+  let prevPlayer = undoMove[1];
+  let prevCell = undoMove[0];
+  nextHistoryArray.push(undoMove);
+  prevCell.classList.remove(prevPlayer);
+}
+
+function nextMove() {
+  let redoMove = nextHistoryArray.pop();
+  let nextPlayer = redoMove[1];
+  let nextCell = redoMove[0];
+  prevHistoryArray.push(redoMove);
+  nextCell.classList.add(nextPlayer);
+}
+
+// PLAY AGAIN
+
+const playAgainButton = document.querySelector(".play-again-button");
+playAgainButton.addEventListener("click", choosePlayer);
 
 // EXIT GAME
 
 const exitButton = document.querySelector(".exit-button");
 
 function exitGame() {
-  gameContainer.classList.remove("show-board");
-  titleContainer.classList.remove("hide");
-  topShapes.classList.remove("hide-shapes");
-  bottomShapes.classList.remove("hide-shapes");
+  gameContainer.classList.remove("show");
+  winningMessage.classList.remove("show");
+  frontPage.classList.remove("hide");
 }
 
 exitButton.addEventListener("click", exitGame);
-
-// HISTORY
-
-let moves = [];
-let boardState = [
-  ["", "", ""],
-  ["", "", ""],
-  ["", "", ""],
-];
-
-cell = moves.push(JSON.parse(JSON.stringify(boardState)));
-console.log(moves);

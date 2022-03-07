@@ -8,14 +8,14 @@ import {
 
 export function playerTurn() {
   if (oTurn) {
-    yourTurnX.style.display = "none";
-    yourTurnO.style.display = "flex";
-    playerTurnO.style.border = "2px dashed rgb(255, 255, 255, 0.5)";
-    playerTurnX.style.border = "none";
+    yourTurnO.classList.add("show");
+    yourTurnX.classList.remove("show");
+    playerTurnO.classList.add("border");
+    playerTurnX.classList.remove("border");
   } else {
-    yourTurnO.style.display = "none";
-    yourTurnX.style.display = "flex";
-    playerTurnX.style.border = "2px dashed rgb(255, 255, 255, 0.5)";
-    playerTurnO.style.border = "none";
+    yourTurnX.classList.add("show");
+    yourTurnO.classList.remove("show");
+    playerTurnX.classList.add("border");
+    playerTurnO.classList.remove("border");
   }
 }

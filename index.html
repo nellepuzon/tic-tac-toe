@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic Tac Toe</title>
     <link rel="stylesheet" href="styles/base.css">
-    <link rel="stylesheet" href="styles/front.css">
+    <link rel="stylesheet" href="styles/front-page.css">
     <link rel="stylesheet" href="styles/shapes.css">
     <link rel="stylesheet" href="styles/game.css">
     <link rel="stylesheet" href="styles/animation.css">
@@ -17,7 +17,7 @@
       href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
       rel="stylesheet"
     />
-    <!-- <script src="./scripts/script.js" defer></script> -->
+    <script src="./scripts/script.js" defer></script>
 </head>
 <body>
   <div class="background">
@@ -39,6 +39,7 @@
     </div>
   </div>
 
+  <div class="front-page">
   <div class="top-decor">
       <div class="shape-1"></div>
       <div class="shape-2"></div>
@@ -150,6 +151,15 @@
       <div class="shape-19">x</div>
       <div class="shape-20"></div>
     </div>
+  </div>
+
+    <div class="choose-player">
+        <div class="question">Choose<br>first player</div>
+        <div class="player-options">
+        <div class="x-player">X</div>
+        <div class="o-player">O</div>
+        </div>
+    </div>
   
     <div class="container">
         <div class="box-title">
@@ -183,22 +193,22 @@
           </div>
         </div>
 
+        <div class="history">
         <div class="history-buttons">
-          <button class="previous">&laquo; Previous</button>
-          <button class="next">Next &raquo;</button>
-          <button class="exit">Exit</button>
-
-        </div>
+          <button class="previous active">&laquo; Previous</button>
+          <button class="next active">Next &raquo;</button>
+          <button class="reset">Reset</button>
+        </div></div>
         <div class="board">
-            <div id="1" class="cell top-left">top-left</div>
-            <div id="2" class="cell top-center">top-center</div>
-            <div id="3" class="cell top-right">top-right</div>
-            <div id="4" class="cell middle-left">middle-left</div>
-            <div id="5" class="cell center">center</div>
-            <div id="6" class="cell middle-right">middle-right</div>
-            <div id="7" class="cell bottom-left">bottom-left</div>
-            <div id="8" class="cell bottom-center">bottom-center</div>
-            <div id="9" class="cell bottom-right">bottom-right</div>
+            <div class="cell top-left">top-left</div>
+            <div class="cell top-center">top-center</div>
+            <div class="cell top-right">top-right</div>
+            <div class="cell middle-left">middle-left</div>
+            <div class="cell center">center</div>
+            <div class="cell middle-right">middle-right</div>
+            <div class="cell bottom-left">bottom-left</div>
+            <div class="cell bottom-center">bottom-center</div>
+            <div class="cell bottom-right">bottom-right</div>
           </div>
           <div class="history">
             <div class="show-history">
@@ -223,13 +233,14 @@
           </div>
     </div>
 
-    <script type="module" src="./scripts/variables.js"></script>
+    <!-- <script type="module" src="./scripts/variables.js"></script>
+    <script type="module" src="./scripts/choose-player.js"></script>
     <script type="module" src="./scripts/start-game.js"></script>
     <script type="module" src="./scripts/player-turn.js"></script>
     <script type="module" src="./scripts/play-game.js"></script>
     <script type="module" src="./scripts/end-game.js"></script>
-    <script type="module" src="./scripts/exit-game.js"></script>
     <script type="module" src="./scripts/history.js"></script>
+    <script type="module" src="./scripts/exit-game.js"></script> -->
 
     
 </body>

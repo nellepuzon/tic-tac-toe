@@ -1,19 +1,17 @@
 import {
   winningText,
   winningMessage,
-  yourTurnO,
-  yourTurnX,
-  playerTurnO,
-  playerTurnX,
   cells,
   letterO,
   letterX,
-  winningCombinations,
-  playAgainButton,
   oTurn,
+  winningCombinations,
+  playAgainButton
 } from "./variables.js";
 
-import { startGame } from "./start-game.js";
+import {
+  choosePlayer
+} from "./choose-player.js"
 
 export function endGame(draw) {
   if (draw) {
@@ -21,25 +19,21 @@ export function endGame(draw) {
   } else {
     winningText.innerText = `${oTurn ? "O" : "X"} Wins!`;
   }
-  winningMessage.classList.add("winning-message-show");
-  yourTurnO.style.display = "none";
-  yourTurnX.style.display = "none";
-  playerTurnX.style.border = "none";
-  playerTurnO.style.border = "none";
+  winningMessage.classList.add("show");
 }
 
 export function isDraw() {
-  return [...cells].every((cell) => {
+  return [...cells].every(function (cell) {
     return cell.classList.contains(letterX) || cell.classList.contains(letterO);
   });
 }
 
 export function checkWin(currentPlayer) {
-  return winningCombinations.some((combination) => {
-    return combination.every((index) => {
+  return winningCombinations.some(function (combination) {
+    return combination.every(function (index) {
       return cells[index].classList.contains(currentPlayer);
     });
   });
 }
 
-playAgainButton.addEventListener("click", startGame);
+playAgainButton.addEventListener("click", choosePlayer);

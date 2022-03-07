@@ -311,8 +311,10 @@
     transform: rotate(45deg);
   }
   
-  .hide-shapes {
+  .hide {
     display: none;
   }
-  
-  
+
+  .show {
+    display: flex;
+  }

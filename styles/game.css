@@ -10,10 +10,6 @@
   box-shadow: 10px 10px 20px rgb(0, 0, 0, 0.5);
 }
 
-.show-board {
-  display: flex;
-}
-
 /* tic tac toe title */
 
 .small-title {
@@ -131,14 +127,15 @@
 }
 
 .turn {
-  display: flex;
+  display: none;
   flex-direction: column;
   margin-top: 70px;
+  
 }
 
 .your-turn-x,
 .your-turn-o {
-  display: flex;
+  display: none;
   margin-bottom: 10px;
   color: rgb(255, 255, 255, 0.6);
   font-size: 20px;
@@ -166,6 +163,7 @@
   align-items: center;
   padding-top: 10px;
   letter-spacing: 1px;
+
 }
 
 span {
@@ -368,4 +366,17 @@ span {
 
 .winning-message-show {
   display: flex;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: flex;
+}
+
+
+.border {
+  border: 2px dashed rgb(255, 255, 255, 0.5)
 }

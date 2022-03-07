@@ -8,3 +8,27 @@
     opacity: 0;
   }
 }
+
+@keyframes bounce {
+  to {
+    transform: scale(1.2, 1.2);
+  }
+}
+
+
+@keyframes forward {
+  to {
+    transform: scale(2, 2);
+  }
+  
+}
+
+@keyframes changingColor {
+  0% {
+    color: rgb(255, 44, 143);
+  }
+  100% {
+    color: rgb(51, 173, 255);
+  }
+}
+

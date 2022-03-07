@@ -1,19 +1,36 @@
-import { board, letterO, letterX, notO, oTurn } from "./variables.js";
+import {
+  currentPlayer,
+  letterX,
+  letterO,
+  oTurn,
+  historyList,
+  board,
+  notOTurn,
+  historyListIndexPlus,
+  prevHistoryArray,
+  cellTarget,
+  cell,
+  currentPlayerTurn
+} from "./variables.js"
 
-import { playerTurn } from "./player-turn.js";
+import {
+  checkWin,
+  endGame,
+  isDraw
+} from "./end-game.js"
 
-import { endGame, isDraw, checkWin } from "./end-game.js";
-
-import { getCellValue, renderBoard, pushBoard } from "./history.js";
+import {
+  playerTurn
+} from "./player-turn.js"
 
 export function cellClick(e) {
-  const cell = e.target;
-  const cellName = cell.innerText;
-  const currentPlayer = oTurn ? letterO : letterX;
-  getCellValue(currentPlayer, cellName);
+  cellTarget(e);
+  const cellPosition = cell.innerText;
+  currentPlayerTurn();
+
+  getCellValue(currentPlayer, cellPosition);
   placeLetter(cell, currentPlayer);
-  renderBoard(cell, currentPlayer);
-  pushBoard();
+
   if (checkWin(currentPlayer)) {
     endGame(false);
   } else if (isDraw()) {
@@ -25,12 +42,32 @@ export function cellClick(e) {
   }
 }
 
-function placeLetter(cell, currentPlayer) {
-  cell.classList.add(currentPlayer);
+function getCellValue(currentPlayer, cellPosition) {
+  const div = document.createElement("div");
+  if (currentPlayer == letterX) {
+    div.innerHTML = `player <span class="markedX">X</span> marked <span class="position">${cellPosition}</span>`;
+  } else {
+    div.innerHTML = `player <span class="markedO">O</span> marked <span class="position">${cellPosition}</span>`;
+  }
+  div.classList.add("history-item");
+  historyList.append(div);
 }
 
-function swapTurns() {
-  notO();
+function placeLetter(cell, currentPlayer) {
+  cell.classList.add(currentPlayer);
+  prevHistoryArray.push([cell, currentPlayer]);
+
+  if (currentPlayer == "x") {
+    currentPlayer = "X";
+  } else {
+    currentPlayer = "O";
+  }
+
+historyListIndexPlus();
+}
+
+export function swapTurns() {
+  notOTurn();
 }
 
 export function cellHover() {
